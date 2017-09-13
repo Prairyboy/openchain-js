@@ -18,9 +18,16 @@ var ByteBuffer = require("protobufjs").ByteBuffer;
 var Long = require("protobufjs").Long;
 var RecordKey = openchain.RecordKey;
 
+const debug = require('debug')('test_apiclient')
+
+const DEFAULT_TEST_CLIENT = "https://test.openchain.org/";
+const TEST_CLIENT = process.env.OPENCHAIN_TEST_CLIENT || DEFAULT_TEST_CLIENT;
+
+debug("test_client",TEST_CLIENT)
+
 describe('ApiClient', function () {
     
-    var client = new openchain.ApiClient("https://test.openchain.org/");
+    var client = new openchain.ApiClient(TEST_CLIENT);
     
     it('getRecord ByteBuffer', function () {
         return client.getRecord(ByteBuffer.fromHex("0000")).then(function (result) {
