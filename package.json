@@ -29,5 +29,8 @@
   },
   "peerDependencies": {
     "bitcore-lib": ">=0.13.15"
+  },
+  "scripts": {
+    "test": "mocha tests"
   }
 }
