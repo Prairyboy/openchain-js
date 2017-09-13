@@ -13,12 +13,14 @@
 // limitations under the License.
 
 var openchain = require("../index");
-var assert = require("assert");
+//var assert = require("assert");
 var ByteBuffer = require("protobufjs").ByteBuffer;
 var Long = require("protobufjs").Long;
 var RecordKey = openchain.RecordKey;
 
-const debug = require('debug')('test_apiclient')
+const debug = require('debug')('test_apiclient');
+const chai = require('chai');
+const assert = chai.assert;
 
 const DEFAULT_TEST_CLIENT = "https://test.openchain.org/";
 const TEST_CLIENT = process.env.OPENCHAIN_TEST_CLIENT || DEFAULT_TEST_CLIENT;
