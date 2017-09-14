@@ -13,14 +13,23 @@
 // limitations under the License.
 
 var openchain = require("../index");
-var assert = require("assert");
+//var assert = require("assert");
 var ByteBuffer = require("protobufjs").ByteBuffer;
 var Long = require("protobufjs").Long;
 var RecordKey = openchain.RecordKey;
 
+const debug = require('debug')('test_apiclient');
+const chai = require('chai');
+const assert = chai.assert;
+
+const DEFAULT_TEST_CLIENT = "https://test.openchain.org/";
+const TEST_CLIENT = process.env.OPENCHAIN_TEST_CLIENT || DEFAULT_TEST_CLIENT;
+
+debug("test_client",TEST_CLIENT)
+
 describe('ApiClient', function () {
     
-    var client = new openchain.ApiClient("https://test.openchain.org/");
+    var client = new openchain.ApiClient(TEST_CLIENT);
     
     it('getRecord ByteBuffer', function () {
         return client.getRecord(ByteBuffer.fromHex("0000")).then(function (result) {
@@ -56,7 +65,7 @@ describe('ApiClient', function () {
         return client.getRecord("/:DATA:info", ByteBuffer.fromHex("abcd")).then(function (result) {
             assert.fail();
         }, function (err) {
-            assert.equal(404, err.statusCode);
+            assert.equal(404, err.status);
         });
     });
     
