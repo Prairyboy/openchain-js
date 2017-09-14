@@ -65,7 +65,7 @@ describe('ApiClient', function () {
         return client.getRecord("/:DATA:info", ByteBuffer.fromHex("abcd")).then(function (result) {
             assert.fail();
         }, function (err) {
-            assert.equal(404, err.statusCode);
+            assert.equal(404, err.status);
         });
     });
     
