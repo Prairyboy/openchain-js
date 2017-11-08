@@ -16,6 +16,7 @@
   "dependencies": {
     "debug": "^3.0.1",
     "httpinvoke": "1.4.0",
+    "lodash": "^4.17.4",
     "node-fetch": "^1.7.3",
     "protobufjs": "4.1.3"
   },
